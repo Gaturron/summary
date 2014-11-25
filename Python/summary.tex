@@ -43,6 +43,31 @@
 \usepackage{hyperref} % Required for hyperlinks
 \hypersetup{hidelinks,colorlinks,breaklinks=true,urlcolor=color2,citecolor=color1,linkcolor=color1,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
 
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{ 
+	language=Python, % choose the language of the code
+	basicstyle=\scriptsize,
+	keywordstyle=\color{black}\bfseries, % style for keywords
+	numbers=none, % where to put the line-numbers
+	numberstyle=\tiny, % the size of the fonts that are used for the line-numbers     
+	backgroundcolor=\color{white},
+	showspaces=false, % show spaces adding particular underscores
+	showstringspaces=false, % underline spaces within strings
+	showtabs=false, % show tabs within strings adding particular underscores
+	frame=single, % adds a frame around the code
+	tabsize=2, % sets default tabsize to 2 spaces
+	rulesepcolor=\color{gray},
+	rulecolor=\color{black},
+	captionpos=b, % sets the caption-position to bottom
+	breaklines=true, % sets automatic line breaking
+	breakatwhitespace=false, 
+}
+
+
+
 %----------------------------------------------------------------------------------------
 %	ARTICLE INFORMATION
 %----------------------------------------------------------------------------------------
@@ -74,20 +99,156 @@
 	
 	\section{Introduction} 
 	
-	\subsection{Compile and Interpret}
-		
+	\subsection[Compile and Interpret]{Compile and Interpret\footnote{\url{http://stackoverflow.com/questions/6889747/is-python-interpreted-or-compiled-or-both}} \footnote{\url{https://docs.python.org/2/library/dis.html}}}
+	
+	\tikzstyle{block} = [draw, fill=blue!20, rectangle, 
+	minimum height=2em, minimum width=3em]
+	
+	\begin{tikzpicture}[auto, node distance=1cm,>=latex']
+	\node [block] (Program) {.py file};
+	\node [block, right of=Program, node distance=2.5cm] (Compiler) {Compiler};
+	\node [block, right of=Compiler, node distance=3.5cm] (Int) {Interpreter};
+	
+	\draw [->] (Program) -- (Compiler);
+	\draw [->] (Compiler) -- node[name=bytecode] {bytecode} (Int);
+	
+	\end{tikzpicture}
+	
+	When we run a python script, first it's compiled. Not to machine code but to bytecode. This compilation make .pyc files. Then this code is interpreted in a VM. There are a lot interpreeters of python: CPython, Jython or IronPython.
+			
 	%------------------------------------------------
 	
-	\section{Variables and Definitions} 
-	Reference: \url{https://docs.python.org/2/tutorial/index.html}
+	\section[Variables and Definitions]{Variables and Definitions\footnote{\url{https://docs.python.org/2/tutorial/index.html}}}  
 	
 	\subsection{Variables}
+	There is not types. The definition is just the name and the value.
+
+	\begin{lstlisting}
+n = 24
+s = 'Hola'
+a = ['a', 'b', 'c']
+>>> range(5, 10)
+[5, 6, 7, 8, 9]
+	\end{lstlisting}
+In while statement, continue statement continues with the next iteration.  
+
+	\subsection{Function}
+	
+	\begin{lstlisting}[language=Python, basicstyle=\scriptsize]
+>>> def fib(n = 1):    # write Fibonacci series up to n
+...     """Print a Fibonacci series up to n."""
+...     a, b = 0, 1
+...     while a < n:
+...         print a,
+...         a, b = b, a+b
+...
+>>> fib(2000)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
+>>> fib
+<function fib at 10042ed0>
+>>> f = fib
+>>> f(100)
+0 1 1 2 3 5 8 13 21 34 55 89
+>>> f() # NEVER modify the default parameter (NEVER DO n=...) 
+1
+	\end{lstlisting}
+	\subsubsection{Lambda functions}
+	\begin{lstlisting}[language=Python, basicstyle=\scriptsize]
+>>> def make_incrementor(n):
+...     return lambda x: x + n
+...
+>>> f = make_incrementor(42)
+>>> f(0)
+42
+>>> f(1)
+43
+	\end{lstlisting}
+
+	\subsection[Scope]{Scope\footnote{\url{http://stackoverflow.com/questions/291978/short-description-of-python-scoping-rules}}}
+	
+	\textbf{LEGB Rule:} define the order of search variable.
+	\begin{itemize}
+		\item L. Local. (Names assigned in any way within a function (def or lambda)), and not declared global in that function.
+		
+		\item E. Enclosing function locals. (Name in the local scope of any and all enclosing functions (def or lambda), form inner to outer.
+		
+		\item G. Global (module). Names assigned at the top-level of a module file, or declared global in a def within the file.
+		
+		\item B. Built-in (Python). Names preassigned in the built-in names module : open,range,SyntaxError,...
+	\end{itemize}
+	
+	The for loop does not have it's own namespace. It would look in the LEGB order.
+	
+	So first search local variables, then enclosing function locals, Global variable and finally built-in functions.
+
+	\subsection{Modules}
+	If we have the definition of fib function in fibo.py file, we can use it like a module definiing it like this.
+	\begin{lstlisting}[language=Python, basicstyle=\scriptsize]
+>>> import fibo
+>>> fibo.fib(1000)
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+>>> from fibo import fib
+>>> fib(500)
+1 1 2 3 5 8 13 21 34 55 89 144 233 377
+	\end{lstlisting}
 	
 	\subsection{Classes}
+
+	\begin{lstlisting}[language=Python, basicstyle=\scriptsize]
+class Dog:
+	kind = 'canine'         # class variable shared 
+			# by all instances
+
+	def __init__(self, name):
+		self.name = name    # instance variable 
+			# unique to each instance
+
+>>> d = Dog('Fido')
+>>> e = Dog('Buddy')
+>>> d.kind                  # shared by all dogs
+'canine'
+>>> e.kind                  # shared by all dogs
+'canine'
+>>> d.name                  # unique to d
+'Fido'
+>>> e.name                  # unique to e
+'Buddy'
+	\end{lstlisting}
 	
-	\subsection{Modules}
+	\subsubsection{Inheritance}
+	\begin{lstlisting}[language=Python, basicstyle=\scriptsize]
+class DerivedClassName(Base1, Base2, Base3):
+	<statement-1>
+	...
+	<statement-N>
+	\end{lstlisting}
 	
 	\subsection{Error and exceptions}
+
+	\begin{lstlisting}[language=Python, basicstyle=\scriptsize]
+import sys
+
+try:
+	f = open('myfile.txt')
+	s = f.readline()
+	i = int(s.strip())
+except IOError as e:
+	print "I/O error({0}): {1}".format(e.errno, e.strerror)
+except ValueError:
+	print "Could not convert data to an integer."
+except:
+	print "Unexpected error:", sys.exc_info()[0]
+raise
+	\end{lstlisting}
+	
+	\subsubsection{Raising exception}
+	The raise statement allows the programmer to force a specified exception to occur. 
+	\begin{lstlisting}[language=Python, basicstyle=\scriptsize]
+>>> raise NameError('HiThere')
+Traceback (most recent call last):
+File "<stdin>", line 1, in ?
+NameError: HiThere
+	\end{lstlisting}
 	
 	%------------------------------------------------
 	
@@ -97,7 +258,10 @@
 	
 	%------------------------------------------------
 	
-	
+	\section{Magic methods}
+
+	Reference: \url{http://www.rafekettler.com/magicmethods.html}
+	%------------------------------------------------	
 	
 	\section{Methods}
 
@@ -178,22 +342,5 @@
 	\subsection{Subsection}
 	
 	\lipsum[15-23] % Dummy text
-	
-	%------------------------------------------------
-	\phantomsection
-	\section*{Acknowledgments} % The \section*{} command stops section numbering
-	
-	\addcontentsline{toc}{section}{Acknowledgments} % Adds this section to the table of contents
-	
-	So long and thanks for all the fish \cite{Figueredo:2009dg}.
-	
-	%----------------------------------------------------------------------------------------
-	%	REFERENCE LIST
-	%----------------------------------------------------------------------------------------
-	\phantomsection
-	\bibliographystyle{unsrt}
-	\bibliography{sample}
-	
-	%----------------------------------------------------------------------------------------
 	
 \end{document}
