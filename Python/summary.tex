@@ -215,7 +215,9 @@ class Dog:
 'Buddy'
 	\end{lstlisting}
 	
-	\subsubsection{Inheritance}
+	For private methods and functions, a leading underscore is conventionally added. 
+	
+	\subsubsection{Multiple Inheritance}
 	\begin{lstlisting}[language=Python, basicstyle=\scriptsize]
 class DerivedClassName(Base1, Base2, Base3):
 	<statement-1>
@@ -252,10 +254,32 @@ NameError: HiThere
 	
 	%------------------------------------------------
 	
-	\section{The Python Standard Library} 
+	\section[The Python Standard Library]{The Python Standard Library\footnote{\url{https://docs.python.org/2/library/}}} 
 	
-	Reference: \url{https://docs.python.org/2/library/}
+	\subsection[Iterators and Generator]{Iterators and Generator\footnote{Tarek Zidae - Expert Python Programming}}
 	
+	\begin{lstlisting}[language=Python, basicstyle=\scriptsize]
+>>> i = iter('abc')
+>>> i.next()
+'a'
+>>> i.next()
+'b'
+>>> i.next()
+'c'
+	\end{lstlisting}
+	
+	Generator using yield. \textbf{Generators should be considered every time you deal with a function that returns a sequence or works in a loop.}
+	
+	\begin{lstlisting}
+>>> def fibonacci():
+... 	a, b = 0, 1
+... 	while True:
+... 		yield b
+... 		a, b = b, a + b
+>>> [fib.next() for i in range(10)] 
+[3, 5, 8, 13, 21, 34, 55, 89, 144, 233]
+	\end{lstlisting}	
+
 	%------------------------------------------------
 	
 	\section{Magic methods}
@@ -263,84 +287,191 @@ NameError: HiThere
 	Reference: \url{http://www.rafekettler.com/magicmethods.html}
 	%------------------------------------------------	
 	
-	\section{Methods}
+	\section[Design Patterns]{Design Patterns\footnote{Tarek Zidae - Expert Python Programming - Chapter 14}}
 
-	\begin{equation}
-	\cos^3 \theta =\frac{1}{4}\cos\theta+\frac{3}{4}\cos 3\theta
-	\label{eq:refname2}
-	\end{equation}
+	\begin{itemize}
+		\item \textbf{Singleton}: restricts instantiation of a class to one object.
+		
+	\begin{lstlisting}
+>>> class Singleton(object):
+... 	def __new__(cls, *args, **kw):
+... 		if not hasattr(cls, '_instance'):
+... 			orig = super(Singleton, cls)
+... 			cls._instance = orig.__new__(cls, *args, **kw)
+... 		return cls._instance
+... 
+>>> class MyClass(Singleton):
+... 	a = 1
+... 
+>>> one = MyClass()
+>>> two = MyClass()
+>>> two.a = 3
+>>> one.a
+3
+	\end{lstlisting}	
+		
+		\item \textbf{Adapter}: wraps a class or an object A so that it works in a context intended for a class or an object B.
+		
+	\begin{lstlisting}
+>>> from os.path import split, splitext
+>>> class DublinCoreAdapter(object):
+... 	def __init__(self, filename):
+... 		self._filename = filename
+... 	def title(self):
+... 		return splitext(split(self._filename)[-1])[0]
+... 	def creator(self):
+... 		return 'Unknown' # we could get it for real
+... 	def languages(self):
+... 	return ('en',)
+>>> class DublinCoreInfo(object):
+... 	def summary(self, dc_ob):
+... 		print 'Title: %s' % dc_ob.title()
+... 		print 'Creator: %s' % dc_ob.creator()
+... 		print 'Languages: %s' % \
+... 			', '.join(dc_ob.languages())
+... 
+>>> adapted = DublinCoreAdapter('example.txt')
+>>> infos = DublinCoreInfo()
+>>> infos.summary(adapted)
+Title: example
+Creator: Unknown
+Languages: en
+	\end{lstlisting}
 	
-	\lipsum[5] % Dummy text
+	\item \textbf{Facade}: provides a high-level, simpler access to a subsystem. Facade is usually done on existing systems, where a package's frequent usage is synthesized in high-level functions. Usually, no classes are needed to provide such a pattern and simple functions in the \_init\_.py module are sufficient.
 	
-	\begin{enumerate}[noitemsep] % [noitemsep] removes whitespace between the items for a compact look
-		\item First item in a list
-		\item Second item in a list
-		\item Third item in a list
-	\end{enumerate}
 	
-	\subsection{Subsection}
+	\item \textbf{Observer}: This is used to notify a list of objects with a state change.
 	
-	\lipsum[6] % Dummy text
+	\begin{lstlisting}
+>>> class Event(object):
+... 	_observers = []
+... 	def __init__(self, subject):
+... 		self.subject = subject
+...
+... 	@classmethod
+... 	def register(cls, observer):
+... 		if observer not in cls._observers:
+... 			cls._observers.append(observer)
+...
+... 	@classmethod
+... 	def unregister(cls, observer):
+... 		if observer in cls._observers:
+... 			self._observers.remove(observer)
+...
+... 	@classmethod
+... 	def notify(cls, subject):
+... 		event = cls(subject)
+... 		for observer in cls._observers:
+... 			observer(event)
+>>> class WriteEvent(Event):
+... 	def __repr__(self):
+... 		return 'WriteEvent'
+... 
+>>> def log(event):
+... print '%s was written' % event.subject
+... 
+>>> WriteEvent.register(log)
+>>> class AnotherObserver(object):
+... 	def __call__(self, event): 
+... 		print 'Yeah %s told me !' % event
+... 
+>>> WriteEvent.register(AnotherObserver())
+>>> WriteEvent.notify('a given file')
+a given file was written
+Yeah WriteEvent told me !
+	\end{lstlisting}
+
+	\item \textbf{Visitor}: helps in separating algorithms from data structures
 	
-	\paragraph{Paragraph} \lipsum[7] % Dummy text
-	\paragraph{Paragraph} \lipsum[8] % Dummy text
+	\begin{lstlisting}
+>>> class Printer(object):
+... 	def visit_list(self, ob):
+... 		print 'list content :'
+... 		print str(ob)
+... 	def visit_dict(self, ob):
+... 		print 'dict keys: %s' % ','.join(ob.keys())
+>>> def visit(visited, visitor):
+... 	cls = visited.__class__.__name__
+... 	meth = 'visit_%s' % cls
+... 	method = getattr(visitor, meth, None)
+... 	if meth is None:
+... 		meth(visited)
+... 
+>>> visit([1, 2, 5], Printer())
+list content : [1, 2, 5]
+>>> visit({'one': 1, 'two': 2, 'three': 3}, Printer())
+dict keys: three,two,one
+	\end{lstlisting}
+
+	\end{itemize}
+
+	%------------------------------------------------	
 	
-	\subsection{Subsection}
 	
-	\lipsum[9] % Dummy text
+	\section{Advanced topics}
+	
+	\subsection[Metaclass method]{Metaclass method\footnote{Tarek Zidae - Expert Python Programming - Chapter 3}}
+	
+	\begin{lstlisting}
+>>> def method(self):
+... return 1
+...
+>>> klass = type('MyClass', (object,), {'method': method})
+>>> instance = klass()
+>>> instance.method()
+1
+	\end{lstlisting}
 		
 	%------------------------------------------------
+
+	\section{Unit tests}
 	
-	\section{Results and Discussion}
-	
-	\lipsum[10] % Dummy text
-	
-	\subsection{Subsection}
-	
-	\lipsum[11] % Dummy text
-	
-	\begin{table}[hbt]
-		\caption{Table of Grades}
-		\centering
-		\begin{tabular}{llr}
-			\toprule
-			\multicolumn{2}{c}{Name} \\
-			\cmidrule(r){1-2}
-			First name & Last Name & Grade \\
-			\midrule
-			John & Doe & $7.5$ \\
-			Richard & Miles & $2$ \\
-			\bottomrule
-		\end{tabular}
-		\label{tab:label}
-	\end{table}
-	
-	\subsubsection{Subsubsection}
-	
-	\lipsum[12] % Dummy text
-	
-	\begin{description}
-		\item[Word] Definition
-		\item[Concept] Explanation
-		\item[Idea] Text
-	\end{description}
-	
-	\subsubsection{Subsubsection}
-	
-	\lipsum[13] % Dummy text
-	
-	\begin{itemize}[noitemsep] % [noitemsep] removes whitespace between the items for a compact look
-		\item First item in a list
-		\item Second item in a list
-		\item Third item in a list
+	\begin{itemize}
+		\item PyUnit \url{http://pyunit.sourceforge.net/pyunit.html}
+		\item DocTest \url{https://docs.python.org/2/library/doctest.html}
 	\end{itemize}
+
+	%------------------------------------------------
 	
-	\subsubsection{Subsubsection}
+	\section[Profiling]{Profiling\footnote{\url{https://docs.python.org/2/library/profile.html}}}
 	
-	\lipsum[14] % Dummy text
+	\begin{lstlisting}
+python -m cProfile [-o output_file] [-s sort_order] myscript.py
+	\end{lstlisting}
 	
-	\subsection{Subsection}
+	Memory profiling: use Guppy \footnote{\url{http://guppy-pe.sourceforge.net/}}
 	
-	\lipsum[15-23] % Dummy text
+	%------------------------------------------------
+	
+	\section{Multiprocessing}
+	
+	Global Interpreter Lock (GIL) is a mechanism used in computer language interpreters to synchronize the execution of threads so that only one thread can execute at a time. An interpreter which uses GIL will always allow exactly one thread to execute at a time, even if run on a multi-core processor. Some popular interpreters that have GIL are CPython and Ruby MRI.
+	
+	\begin{lstlisting}
+>>> from processing import Process
+>>> import os
+>>> def work():
+... print 'hey i am a process, id: %d' % os.getpid()
+>>> ps = []
+>>> for i in range(4):
+... p = Process(target=work)
+... ps.append(p)
+... p.start()
+... 
+hey i am a process, id: 27457
+hey i am a process, id: 27458
+hey i am a process, id: 27460
+	\end{lstlisting}
+	
+	
+	%------------------------------------------------
+
+	\section{Useful Tools}
+	
+	\begin{itemize}
+		\item \textbf{Pylint}, a very flexible source code analyzer
+		\item \textbf{CloneDigger}, a duplicate code detection tool
+	\end{itemize}
 	
 \end{document}

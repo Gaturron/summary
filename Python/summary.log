@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  24 NOV 2014 21:26
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  25 NOV 2014 21:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1202,13 +1202,6 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
  (./summary.toc
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 2.
-LaTeX Font Info:    Try loading font information for OMS+phv on input line 24.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsphv.fd
-File: omsphv.fd 
-)
-LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 24.
 )
 \tf@toc=\write5
 \openout5 = `summary.toc'.
@@ -1253,59 +1246,61 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 
 ]
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <7> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 236.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 238.
 
-Overfull \hbox (5.62573pt too wide) in paragraph at lines 257--258
-\OT1/ptm/m/n/10 (-20) Reference: [][]$\OT1/pcr/m/n/10 https : / / docs . python
- . org / 2 / library/$[][] 
- []
-
-
-Overfull \hbox (38.62573pt too wide) in paragraph at lines 263--265
+Overfull \hbox (38.62573pt too wide) in paragraph at lines 287--289
 \OT1/ptm/m/n/10 (-20) Reference: [][]$\OT1/pcr/m/n/10 http : / / www . rafekett
 ler . com / magicmethods .
  []
 
-[2] [3] 
+[2]
+Overfull \hbox (30.05548pt too wide) in paragraph at lines 431--432
+[]\OT1/ptm/m/n/10 (-20) PyUnit [][]$\OT1/pcr/m/n/10 http : / / pyunit . sourcef
+orge . net / pyunit .
+ []
+
+
+Overfull \hbox (19.78467pt too wide) in paragraph at lines 432--433
+[]\OT1/ptm/m/n/10 (-20) DocTest [][]$\OT1/pcr/m/n/10 https : / / docs . python 
+. org / 2 / library /
+ []
+
+
 AED: lastpage setting LastPage
-[4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 346.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 346.
+[3]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 477.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 477.
  (./summary.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 346.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 346.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 477.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 477.
 Package rerunfilecheck Info: File `summary.out' has not changed.
-(rerunfilecheck)             Checksum: C2DA1CCBB2038F847C5FE3E32C3B1EA4;1423.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 346.
+(rerunfilecheck)             Checksum: 63D749B4EC01E469C2D87178E41AB0CD;1304.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 477.
  ) 
 Here is how much of TeX's memory you used:
- 23181 strings out of 493307
- 411826 string characters out of 6139905
- 816973 words of memory out of 5000000
- 25890 multiletter control sequences out of 15000+600000
- 62481 words of font info for 216 fonts, out of 8000000 for 9000
+ 23309 strings out of 493307
+ 413723 string characters out of 6139905
+ 993973 words of memory out of 5000000
+ 25962 multiletter control sequences out of 15000+600000
+ 58114 words of font info for 165 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,11n,56p,427b,1344s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,12n,56p,427b,1963s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
 st, replaced by a fixed one
 
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8
-a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
-mes/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb
->
-Output written on summary.pdf (4 pages, 144949 bytes).
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvet
+ic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/urw/times/utmri8a.pfb>
+Output written on summary.pdf (3 pages, 133962 bytes).
 PDF statistics:
- 355 PDF objects out of 1000 (max. 8388607)
- 309 compressed objects within 4 object streams
- 121 named destinations out of 1000 (max. 500000)
- 47813 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 503 PDF objects out of 1000 (max. 8388607)
+ 462 compressed objects within 5 object streams
+ 253 named destinations out of 1000 (max. 500000)
+ 49853 words of extra memory for PDF output out of 51595 (max. 10000000)
 

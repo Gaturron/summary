@@ -7,17 +7,16 @@
 \BOOKMARK [2][-]{subsection.2.3}{Scope}{section.2}% 7
 \BOOKMARK [2][-]{subsection.2.4}{Modules}{section.2}% 8
 \BOOKMARK [2][-]{subsection.2.5}{Classes}{section.2}% 9
-\BOOKMARK [3][-]{subsubsection.2.5.1}{Inheritance}{subsection.2.5}% 10
+\BOOKMARK [3][-]{subsubsection.2.5.1}{Multiple Inheritance}{subsection.2.5}% 10
 \BOOKMARK [2][-]{subsection.2.6}{Error and exceptions}{section.2}% 11
 \BOOKMARK [3][-]{subsubsection.2.6.1}{Raising exception}{subsection.2.6}% 12
 \BOOKMARK [1][-]{section.3}{The Python Standard Library}{}% 13
-\BOOKMARK [1][-]{section.4}{Magic methods}{}% 14
-\BOOKMARK [1][-]{section.5}{Methods}{}% 15
-\BOOKMARK [2][-]{subsection.5.1}{Subsection}{section.5}% 16
-\BOOKMARK [2][-]{subsection.5.2}{Subsection}{section.5}% 17
-\BOOKMARK [1][-]{section.6}{Results and Discussion}{}% 18
-\BOOKMARK [2][-]{subsection.6.1}{Subsection}{section.6}% 19
-\BOOKMARK [3][-]{subsubsection.6.1.1}{Subsubsection}{subsection.6.1}% 20
-\BOOKMARK [3][-]{subsubsection.6.1.2}{Subsubsection}{subsection.6.1}% 21
-\BOOKMARK [3][-]{subsubsection.6.1.3}{Subsubsection}{subsection.6.1}% 22
-\BOOKMARK [2][-]{subsection.6.2}{Subsection}{section.6}% 23
+\BOOKMARK [2][-]{subsection.3.1}{Iterators and Generator}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{Magic methods}{}% 15
+\BOOKMARK [1][-]{section.5}{Design Patterns}{}% 16
+\BOOKMARK [1][-]{section.6}{Advanced topics}{}% 17
+\BOOKMARK [2][-]{subsection.6.1}{Metaclass method}{section.6}% 18
+\BOOKMARK [1][-]{section.7}{Unit tests}{}% 19
+\BOOKMARK [1][-]{section.8}{Profiling}{}% 20
+\BOOKMARK [1][-]{section.9}{Multiprocessing}{}% 21
+\BOOKMARK [1][-]{section.10}{Useful Tools}{}% 22
