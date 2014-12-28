@@ -20,5 +20,8 @@
 \contentsline {section}{\numberline {7}Unit tests}{3}{section.7}
 \contentsline {section}{\numberline {8}Profiling}{3}{section.8}
 \contentsline {section}{\numberline {9}Multiprocessing}{3}{section.9}
-\contentsline {section}{\numberline {10}Useful Tools}{3}{section.10}
+\contentsline {section}{\numberline {10}Useful Tools}{4}{section.10}
+\contentsline {section}{\numberline {11}Books}{4}{section.11}
+\contentsline {subsection}{\numberline {11.1}Read:}{4}{subsection.11.1}
+\contentsline {subsection}{\numberline {11.2}To read:}{4}{subsection.11.2}
 \contentsfinish 

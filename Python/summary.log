@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  25 NOV 2014 21:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  27 DEC 2014 21:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1202,6 +1202,16 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
  (./summary.toc
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 2.
+
+Overfull \hbox (1.4597pt too wide) detected at line 25
+\OT1/phv/m/n/10 11.1 
+ []
+
+
+Overfull \hbox (1.4597pt too wide) detected at line 26
+\OT1/phv/m/n/10 11.2 
+ []
+
 )
 \tf@toc=\write5
 \openout5 = `summary.toc'.
@@ -1212,8 +1222,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 102.
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 102.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 Package microtype Info: Loading generic settings for font family
@@ -1265,23 +1274,50 @@ Overfull \hbox (19.78467pt too wide) in paragraph at lines 432--433
 . org / 2 / library /
  []
 
+[3]
+! Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   d
+l.488 ...c/handout.html#don-t-reinvent-the-wheel}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   d
+l.488 ...c/handout.html#don-t-reinvent-the-wheel}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 488--488
+[][][][][]$\OT1/pcr/m/n/8 http : / / python . net / []goodger / projects / pyco
+n / 2007 /
+ []
+
 
 AED: lastpage setting LastPage
-[3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 477.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 477.
+[4
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 492.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 492.
  (./summary.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 477.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 477.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 492.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 492.
 Package rerunfilecheck Info: File `summary.out' has not changed.
-(rerunfilecheck)             Checksum: 63D749B4EC01E469C2D87178E41AB0CD;1304.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 477.
+(rerunfilecheck)             Checksum: D9C17A665994DDC1BA894B7EA9D72A11;1463.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 492.
  ) 
 Here is how much of TeX's memory you used:
- 23309 strings out of 493307
- 413723 string characters out of 6139905
- 993973 words of memory out of 5000000
- 25962 multiletter control sequences out of 15000+600000
+ 23317 strings out of 493307
+ 413827 string characters out of 6139905
+ 1021973 words of memory out of 5000000
+ 25965 multiletter control sequences out of 15000+600000
  58114 words of font info for 165 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,12n,56p,427b,1963s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1297,10 +1333,10 @@ ic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/times/utmri8a.pfb>
-Output written on summary.pdf (3 pages, 133962 bytes).
+Output written on summary.pdf (4 pages, 136624 bytes).
 PDF statistics:
- 503 PDF objects out of 1000 (max. 8388607)
- 462 compressed objects within 5 object streams
- 253 named destinations out of 1000 (max. 500000)
- 49853 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 530 PDF objects out of 1000 (max. 8388607)
+ 485 compressed objects within 5 object streams
+ 258 named destinations out of 1000 (max. 500000)
+ 49877 words of extra memory for PDF output out of 51595 (max. 10000000)
 
